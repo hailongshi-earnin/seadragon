@@ -2,21 +2,17 @@ import base64
 
 print('Loading function')
 
+import base64
 
 def lambda_handler(event, context):
     output = []
-
     for record in event['records']:
-        print(record['recordId'])
-        payload = base64.b64decode(record['data'])
-
+        payload = base64.b64decode(record['data']) + b'\n'
         output_record = {
             'recordId': record['recordId'],
             'result': 'Ok',
-            'data': base64.b64encode(payload + "\n")
+            'data': base64.b64encode(payload).decode("utf-8")
         }
         output.append(output_record)
-
     print('Successfully processed {} records.'.format(len(event['records'])))
-
     return {'records': output}

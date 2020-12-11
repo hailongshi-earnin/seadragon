@@ -1,0 +1,29 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": "logs:CreateLogGroup",
+            "Resource": "arn:aws:logs:us-west-2:429750608758:*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "logs:CreateLogStream",
+                "logs:PutLogEvents"
+            ],
+            "Resource": [
+                "arn:aws:logs:us-west-2:429750608758:log-group:/aws/lambda/Dynamodb:*"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "firehose:PutRecordBatch"
+            ],
+            "Resource": [
+                "arn:aws:firehose:us-west-2:429750608758:deliverystream/DynamoDbDataChangeLogFirehose"
+            ]
+        }
+    ]
+}

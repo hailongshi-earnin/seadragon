@@ -1,0 +1,10 @@
+{
+    "Effect": "Allow",
+    "Action": [
+        "lambda:InvokeFunction",
+        "lambda:GetFunctionConfiguration"
+    ],
+    "Resource": [
+        "arn:aws:lambda:us-west-2:429750608758:function:Dynamodb:*"
+    ]
+}
